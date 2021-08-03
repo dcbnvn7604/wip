@@ -1,0 +1,38 @@
+with(this) {
+    return _c('div', {
+        attrs: {
+            "id": "app"
+        }
+    }, [_c('parent')], 1)
+}
+
+with(this) {
+    return _c('div', {
+        staticClass: "parent"
+    }, [_c('Child', {
+        attrs: {
+            "items": itemsForChild
+        },
+        scopedSlots: _u([{
+            key: "custom-display",
+            fn: function() {
+                return _l((items), function(item) {
+                    return _c('div', {
+                        key: item.id
+                    }, [_v("\\n                " + _s(item.label) + "\\n              ")])
+                })
+            },
+            proxy: true
+        }])
+    })], 1)
+}
+
+with(this) {
+    return _c('div', {
+        staticClass: "child"
+    }, [_t("custom-display", [(items.length) ? _l((items), function(item) {
+        return _c('div', {
+            key: item.id
+        }, [_v("\\n                " + _s(item.label) + "\\n              ")])
+    }) : _e()])], 2)
+}

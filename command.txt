@@ -1,0 +1,7 @@
+# bootstrap
+npm run css-compile
+npm run js-compile-standalone
+npm run docs-serve
+
+# vue
+npm run build -- web-full-dev

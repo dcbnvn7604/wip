@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue</title>
+</head>
+<body>
+  <div id="app">
+    <Parent />
+  </div>
+  <script type="text/javascript" src="../vue/dist/vue.js"></script>
+  <script type="text/javascript">
+    Vue.component('Child', {
+      template: `
+        <div class="child">
+          <slot name="custom-display">
+            <template v-if="items.length">
+              <div v-for="item of items" :key="item.id">
+                {{ item.label }}
+              </div>
+            </template>
+          </slot>
+        </div>`,
+      props: ['items']
+    });
+    Vue.component('Parent', {
+      template: `
+        <div class="parent">
+          <Child :items="itemsForChild">
+            <template #custom-display>
+              <div v-for="item of items" :key="item.id">
+                {{ item.label }}
+              </div>
+            </template>
+          </Child>
+        </div>`,
+      data: () => ({
+        items: [
+          { id: 1, label: 'Tesla', description: 'some desc' },
+          { id: 2, label: 'BMW', description: 'some desc' },
+        ],
+        itemsForChild: [{ id: 3, label: 'Tesla1', description: 'some desc' }]
+      })
+    })
+    var app = new Vue({
+      el: '#app'
+    });
+  </script>
+</body>
+</html>
